@@ -2,7 +2,7 @@
   <div id="app">
     <main>
       <div class="search-box">
-        <input type="text" class="search-bar" placeholder="Ville..." v-model="cities" @keypress="weatherInfos"/>
+        <input type="text" class="search-bar" placeholder="Rechercher" v-model="cities" @keypress="weatherInfos"/>
       </div>
       <div class="weather-wrap" v-if="typeof weather.main != 'undefined'">
         <div class="location-box">
@@ -60,26 +60,80 @@ export default {
 
 <style>
 
-  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
 
   * {
-    margin:auto;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto';
-  }
-
-  .search-box .search-bar {
-    width: 100%;
-  }
-
-  main {
-    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    
   }
 
   #app {
-    background-image: url(./assets/sky.jpg);
-    background-size:auto;
-    background-position:center;
+    background-image: url('./assets/sky.jpg');
+    background-size: cover;
+    background-position: bottom;
   }
+  main {
+    min-height: 100vh;
+    padding: 25px;
+  }
+  .search-box .search-bar {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    background: none;
+    border: none;
+    outline: none;
+    background-color:rgb(255, 255, 255, 0.50);
+    border-radius: 20px;
+    font-size:20px;
+  }
+
+  .weather-wrap {
+    text-align: center;
+    margin-top: 30px;
+
+  }
+
+  .location {
+    font-size: 40px;
+    color:white;
+    text-shadow: 2px 2px 2px black;
+    font-weight: 900;
+  }
+
+  .date {
+    margin:10px;
+    color:white;
+    text-shadow: 2px 2px 2px black;
+  }
+
+  .temp {
+    margin: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 100px;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    background-color: rgb(255, 255, 255, 0.50);
+    padding: 20px;
+    border-radius: 100px;
+    box-shadow: 2px 2px 2px black;
+  }
+  .weather {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 50px;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    background-color: rgb(255, 255, 255, 0.50);
+    padding: 15px;
+    border-radius: 10px 40px;
+    box-shadow: 2px 2px 2px black;
+  }
+  
 
 </style>
