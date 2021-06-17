@@ -1,18 +1,18 @@
 <template>
-  <div id='app'>
+  <div id="app">
     <main>
-      <div class='search-box'>
-        <input type='text' class='search-bar' placeholder='Ville...' v-model="cities" @keypress="fetchWeather"/>
+      <div class="search-box">
+        <input type="text" class="search-bar" placeholder="Ville..." v-model="cities" @keypress="weatherInfos"/>
       </div>
-      <div class='weather-wrap' >
-        <div class='location-box'>
-          <div class='location'>{{ weather.name }}</div>
-          <div class='date'>{{ date() }}</div>
+      <div class="weather-wrap" v-if="typeof weather.main != 'undefined'">
+        <div class="location-box">
+          <div class="location">{{ weather.name }}</div>
+          <div class="date">{{ date() }}</div>
         </div>
       
-        <div class='weather-box'>
-          <div class='temp'>{{ weather.main.temp }}°C</div>
-          <div class='weather'>Soleil</div>
+        <div class="weather-box">
+          <div class="temp">{{ Math.round(weather.main.temp) }}°C</div>
+          <div class="weather">{{ weather.weather[0].description }}</div>
         </div>
       </div>
     </main>
@@ -22,19 +22,19 @@
 
 <script>
 export default {
-  name: 'App',
+  name: "App",
   data () {
     return {
-      api_key: '43a97c01ee587826f1cf74c5564bfb3a',
-      url_base: 'https://api.openweathermap.org/data/2.5/',
-      cities: '',
+      api_key: "43a97c01ee587826f1cf74c5564bfb3a",
+      url_base: "https://api.openweathermap.org/data/2.5/",
+      cities: "",
       weather: {}
     }
   },
   methods: {
-    fetchWeather (e) {
-      if (e.key == 'Enter') {
-        fetch(`${this.url_base}weather?q=${this.cities}&units=metric&appid=${this.api_key}`)
+    weatherInfos (e) {
+      if (e.key == "Enter") {
+        fetch(`${this.url_base}weather?q=${this.cities}&units=metric&appid=${this.api_key}&lang=fr`)
         .then(res => {
           return res.json();
         })
@@ -47,7 +47,7 @@ export default {
   
       date() {
         var today = new Date();
-        var date = `${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}`;
+        var date = `${today.getDate()}-${today.getMonth()+1}-${today.getFullYear()}`;
         return date;
       }
     
