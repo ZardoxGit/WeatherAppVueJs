@@ -7,7 +7,7 @@
       <div class="weather-wrap" v-if="typeof weather.main != 'undefined'">
         <div class="location-box">
           <div class="location">{{ weather.name }}</div>
-          <div class="date">{{ date() }}</div>
+          <div class="date">{{ currentDate() }}</div>
         </div>
       
         <div class="weather-box">
@@ -45,9 +45,12 @@ export default {
       this.weather = results;
     },
   
-      date() {
+      currentDate() {
         var today = new Date();
-        var date = `${today.getDate()}-${today.getMonth()+1}-${today.getFullYear()}`;
+        var days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+        var months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"];
+        var date = `${days[today.getDay()]} ${today.getDate()} ${months[today.getMonth()]} ${today.getFullYear()}`;
+        
         return date;
       }
     
@@ -56,6 +59,27 @@ export default {
 </script>
 
 <style>
-  
- 
+
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+  * {
+    margin:auto;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+  }
+
+  .search-box .search-bar {
+    width: 100%;
+  }
+
+  main {
+    min-height: 100vh;
+  }
+
+  #app {
+    background-image: url(./assets/sky.jpg);
+    background-size:auto;
+    background-position:center;
+  }
+
 </style>
