@@ -1,3 +1,9 @@
+import Vue from 'vue'
+
+import ResetInput from 'v-reset-input'
+
+Vue.use(ResetInput)
+
 <template>
   <div id="app">
     <main>
@@ -47,12 +53,13 @@ export default {
   
       currentDate() {
         var today = new Date();
-        var days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+        var days = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
         var months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"];
         var date = `${days[today.getDay()]} ${today.getDate()} ${months[today.getMonth()]} ${today.getFullYear()}`;
         
         return date;
       }
+
     
   }
 }
