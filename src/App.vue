@@ -1,9 +1,3 @@
-import Vue from 'vue'
-
-import ResetInput from 'v-reset-input'
-
-Vue.use(ResetInput)
-
 <template>
   <div id="app">
     <main>
